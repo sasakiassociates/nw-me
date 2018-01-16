@@ -31,9 +31,11 @@ const enterEditMode = function () {
         storeContent(keyedObjects, $(this));
     });
 
-    var editor = new MediumEditor(elements);
+    const editor = new MediumEditor(elements, {
+        buttons: ['bold', 'italic', 'underline', 'anchor'],
+    });
     editor.subscribe('editableInput', function (event, editable) {
-        var $editable = $(editable);
+        const $editable = $(editable);
         storeContent(keyedObjects, $editable);
     });
 };

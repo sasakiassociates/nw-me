@@ -36,3 +36,19 @@ exports.prepareEditorEnvironment = function (test) {
         console.log('prepareEditorEnvironment DONE');
     });
 };
+exports.saveHtmlEdits = function (test) {
+    test.expect(1);
+    let testBedDir = path.join(__dirname, 'testbed');
+    process.chdir(testBedDir);
+    const data = {
+        "header": {
+            "title": "Title Edited from Test",
+        }
+    };
+    const nwme = require('../lib/nwme');
+    nwme.saveHtmlFile('./edit/mock1.html', data, function () {
+        const mockContents = fs.readFileSync('./edit/mock1.html').toString();
+        test.ok(mockContents.indexOf(`>${data.header.title}</h1>`) > 0, "header.title was added");
+        test.done();
+    });
+};

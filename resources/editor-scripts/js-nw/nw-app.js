@@ -38,7 +38,7 @@ editMenu.append(new gui.MenuItem({
     modifiers: "ctrl",
     click: function () {
         const data = getSaveData();
-        nwme.saveHtmlFile(window.location.pathname, data, function (data) {
+        nwme.saveHtmlFile('.' + window.location.pathname, data, function () {
             var win = gui.Window.get();
             global.me_editMode = false;
             win.reload();

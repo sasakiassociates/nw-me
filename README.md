@@ -17,7 +17,8 @@ npm i -S nw-me
 
 Create the folder structure and index.js:
 ```bash
-nwme init
+var nwme = require('nw-me');
+nwme.init();
 ```
 
 Drop your static HTML files and any associated scripts and assets into the "original" folder.
@@ -28,7 +29,7 @@ For any HTML element that you want to make editable, specify a data attribute as
 <h1 data-editable="header.title">Welcome to NW-ME</h1>
 ```
 
-This can be any element with text content (including tags such as `<b>, <i> <a>` etc). See [MediumEditor Documentation](https://github.com/yabwe/medium-editor) for more information.
+The variable name (e.g. `header.title`) should be unique (unless the content is intended to be repeated). This can be any element with text content (including tags such as `<b>, <i> <a>` etc). See [MediumEditor Documentation](https://github.com/yabwe/medium-editor) for more information.
 
 ### Running the Application
 
