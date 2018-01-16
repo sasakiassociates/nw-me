@@ -28,7 +28,7 @@ For any HTML element that you want to make editable, specify a data attribute as
 <h1 data-editable="header.title">Welcome to NW-ME</h1>
 ```
 
-This can be any element with text content (including tags such as <b>, <i> <a> etc). See [MediumEditor Documentation](https://github.com/yabwe/medium-editor) for more information.
+This can be any element with text content (including tags such as `<b>, <i> <a>` etc). See [MediumEditor Documentation](https://github.com/yabwe/medium-editor) for more information.
 
 ### Running the Application
 
