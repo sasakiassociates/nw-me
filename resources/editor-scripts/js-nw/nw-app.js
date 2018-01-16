@@ -1,4 +1,4 @@
-const gui = require('nw.gui');
+var gui = require('nw.gui');
 const fs = require("fs");
 const nwme = require('nw-me');
 const menu = new gui.Menu({type: 'menubar'});
@@ -45,6 +45,16 @@ editMenu.append(new gui.MenuItem({
         });
     }
 }));
+editMenu.append(new gui.MenuItem({
+    label: 'Discard Edits',
+    key: '3',//not working...
+    modifiers: "ctrl",
+    click: function () {
+        const win = gui.Window.get();
+        global.me_editMode = false;
+        win.reload();
+    }
+}));
 
 const exportMenu = new gui.Menu();
 menu.append(new gui.MenuItem({
@@ -53,7 +63,7 @@ menu.append(new gui.MenuItem({
 }));
 exportMenu.append(new gui.MenuItem({
     label: 'Flatten',
-    key: '3',//not working...
+    key: '4',//not working...
     modifiers: "ctrl",
     click: function () {
         //TODO
