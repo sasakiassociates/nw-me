@@ -7,6 +7,14 @@ by way of [nwjs](https://github.com/nwjs/nw.js)
 
 DOM manipulation is handled by jquery in the browser and [Cheerio](https://github.com/cheeriojs/cheerio) in node.js.
 
+## Use Case
+
+There seems to be a CMS out there for just about everything. However, I couldn't find one that would check these boxes:
+* Free to use and 100% Open Source
+* Editable directly on the page (full WYSIWYG)
+* Start with a set of static interlinked HTML files (built on any client side framework and with any content)
+* One-click staging/publish as completely static HTML files to be hosted on S3 or similar.
+
 ## Install
 
 ```bash

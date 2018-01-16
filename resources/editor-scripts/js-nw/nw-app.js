@@ -1,12 +1,12 @@
-var gui = require('nw.gui');
-var fs = require("fs");
-var nwme = require('nw-me');
-var menu = new gui.Menu({type: 'menubar'});
+const gui = require('nw.gui');
+const fs = require("fs");
+const nwme = require('nw-me');
+const menu = new gui.Menu({type: 'menubar'});
 
-var versionHandler = new SAS.NwFileHandler(['.json'], 'Versions', menu);
+const versionHandler = new SAS.NwFileHandler(['.json'], 'Versions', menu);
 
 versionHandler.onChooseFile(function (json) {
-    var data = JSON.parse(fs.readFileSync(json));
+    const data = JSON.parse(fs.readFileSync(json));
     restoreFromData(data);
 });
 
@@ -15,7 +15,7 @@ versionHandler.onSaveDataRequested(function (callback) {
 });
 
 
-var editMenu = new gui.Menu();
+const editMenu = new gui.Menu();
 menu.append(new gui.MenuItem({
     label: 'Edit',
     submenu: editMenu
@@ -28,7 +28,7 @@ editMenu.append(new gui.MenuItem({
     click: function () {
         console.log('editMode SET');
         global.me_editMode = true;
-        var win = gui.Window.get();
+        const win = gui.Window.get();
         win.reload();
     }
 }));
@@ -39,14 +39,14 @@ editMenu.append(new gui.MenuItem({
     click: function () {
         const data = getSaveData();
         nwme.saveHtmlFile('.' + window.location.pathname, data, function () {
-            var win = gui.Window.get();
+            const win = gui.Window.get();
             global.me_editMode = false;
             win.reload();
         });
     }
 }));
 
-var exportMenu = new gui.Menu();
+const exportMenu = new gui.Menu();
 menu.append(new gui.MenuItem({
     label: 'Export',
     submenu: exportMenu
