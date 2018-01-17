@@ -1,6 +1,6 @@
 {
   "name": "nw-me",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A very simple WYSIWYG editor for static HTML pages that can be saved locally and deployed to a static host such as S3",
   "repository": {
     "type": "git",
