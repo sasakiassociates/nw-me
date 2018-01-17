@@ -54,9 +54,9 @@ Deployment to static hosts such as S3 can be handled using a module with a ".dep
 this.deploy = function (folder, type, callback) { ...
 ```
 
-folder: the file path of the 'deploy' folder that is to be copied to S3.
-type: either 'staging' or 'production' depending on which option the user selected.
-callback: the method to call when deployment is complete. If a "url" property is passed back, this URL will be run from shell (launched in the default browser).
+* folder: the file path of the 'deploy' folder that is to be copied to S3.
+* type: either 'staging' or 'production' depending on which option the user selected.
+* callback: the method to call when deployment is complete. If a "url" property is passed back, this URL will be run from shell (launched in the default browser).
 
 ```javascript
 callback({
