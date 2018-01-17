@@ -80,7 +80,9 @@ addMenu('Export', [
     {
         label: 'Flatten',
         click: function () {
-            //TODO
+            nwme.deployHtmlFiles('./', function () {
+                alert('Deployed');
+            });
         }
     }
 ]);
