@@ -42,23 +42,31 @@ exports.prepareEditorEnvironment = function (test) {
     });
 };
 exports.saveHtmlEdits = function (test) {
-    test.expect(1);
+    test.expect(2);
     let testBedDir = path.join(__dirname, 'testbed');
     process.chdir(testBedDir);
     nwme.saveHtmlFile('./edit/mock1.html', data, function () {
-        const mockContents = fs.readFileSync('./edit/mock1.html').toString();
-        test.ok(mockContents.indexOf(`>${data.header.title}</h1>`) > 0, "header.title was added");
-        test.done();
+        nwme.saveHtmlFile('./edit/deeper/mockDeep.html', data, function () {
+            const mockContents = fs.readFileSync('./edit/mock1.html').toString();
+            test.ok(mockContents.indexOf(`>${data.header.title}</h1>`) > 0, "header.title was added");
+            const mockContents2 = fs.readFileSync('./edit/deeper/mockDeep.html').toString();
+            test.ok(mockContents2.indexOf(`>${data.header.title}</h1>`) > 0, "header.title was added (deeper)");
+            test.done();
+        });
     });
 };
 exports.saveDeployFile = function (test) {
-    test.expect(2);
+    test.expect(3);
     let testBedDir = path.join(__dirname, 'testbed');
     process.chdir(testBedDir);
     nwme.deployHtmlFiles('./', function () {
         const mockContents = fs.readFileSync('./deploy/mock1.html').toString();
         test.ok(mockContents.indexOf(`>${data.header.title}</h1>`) > 0, "header.title persists");
         test.ok(mockContents.indexOf('data-temporary') < 0, "data-temporary tags removed");
+
+        const mockContents2 = fs.readFileSync('./deploy/deeper/mockDeep.html').toString();
+        test.ok(mockContents2.indexOf(`>${data.header.title}</h1>`) > 0, "header.title persists (deeper)");
+
         test.done();
     });
 };
