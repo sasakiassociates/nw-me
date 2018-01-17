@@ -65,6 +65,8 @@ callback({
 });
 ```
 
+And example S3 deployment module is included (commented out) in the "index.js" file.
+
 ### Behind the scenes
 
 1. If the `editing` folder is empty, all files from `original` are copied to `edit`
