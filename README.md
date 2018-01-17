@@ -48,7 +48,22 @@ Launch the NWJS application
 Switch between "Edit Mode" and "View Mode" to edit content or navigate between HTML pages. Changes are saved when you toggle back to "View Mode".
 
 ### Deployment
-TODO
+Deployment to static hosts such as S3 can be handled using a module with a ".deploy" method with the following signature:
+
+```javascript
+this.deploy = function (folder, type, callback) { ...
+```
+
+folder: the file path of the 'deploy' folder that is to be copied to S3.
+type: either 'staging' or 'production' depending on which option the user selected.
+callback: the method to call when deployment is complete. If a "url" property is passed back, this URL will be run from shell (launched in the default browser).
+
+```javascript
+callback({
+    success: true,
+    url: 'http://my-site.s3-website-us-east-1.amazonaws.com/' + type + '/'
+});
+```
 
 ### Behind the scenes
 
