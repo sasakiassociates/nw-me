@@ -40,7 +40,7 @@ addMenu('Edit', [
     },
     {
         label: 'View Mode',
-        click:  function () {
+        click: function () {
             const data = getSaveData();
             nwme.saveHtmlFile('.' + window.location.pathname, data, function () {
                 const win = gui.Window.get();
@@ -69,7 +69,7 @@ addMenu('Browser', [
     },
     {
         label: 'Forward',
-        click:  function () {
+        click: function () {
             const win = gui.Window.get();
             win.window.history.forward();
         }
@@ -78,10 +78,35 @@ addMenu('Browser', [
 
 addMenu('Export', [
     {
-        label: 'Flatten',
+        label: 'Deploy Staging',
         click: function () {
-            nwme.deployHtmlFiles('./', function () {
-                alert('Deployed');
+            nwme.deployHtmlFiles('./', 'staging', function (url) {
+                if (result) {
+                    if (result.success && result.url) {
+                        gui.Shell.openExternal(result.url);
+                    } else {
+                        alert(result.error);
+                    }
+                } else {
+                    alert('Deployed Locally');
+                }
+
+            });
+        }
+    },
+    {
+        label: 'Deploy Production',
+        click: function () {
+            nwme.deployHtmlFiles('./', 'production', function (result) {
+                if (result) {
+                    if (result.success && result.url) {
+                        gui.Shell.openExternal(result.url);
+                    } else {
+                        alert(result.error);
+                    }
+                } else {
+                    alert('Deployed Locally');
+                }
             });
         }
     }
